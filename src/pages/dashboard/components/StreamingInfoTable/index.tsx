@@ -7,18 +7,18 @@ import {
   ParaXSmall,
 } from "~/components/typography";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+import { CiFilter } from "react-icons/ci";
 import {
   MdKeyboardArrowRight,
   MdKeyboardArrowLeft,
   MdClose,
 } from "react-icons/md";
 
-import { Box, Flex, Select } from "~/components/atoms";
+import { Box, Flex } from "~/components/atoms";
 import { IStreamingInfoTableData } from "../../types";
 import { useDashboard } from "~/contexts/DashboardContext";
 import { DASHBOARD_FILTER_KEYS } from "~/constants";
 import { camelToNormal } from "~/utils";
-import { useIsTabletOrMobileMedia } from "~/hooks";
 
 interface IStreamingInfoTableProps {
   data: IStreamingInfoTableData[];
@@ -31,7 +31,6 @@ interface ITableConfigImmerState {
     key: string;
     direction: (typeof SORTING_DIRECTION)[keyof typeof SORTING_DIRECTION];
   };
-  searchQuery: string;
   currentPage: number;
   pageSize: number;
 }
@@ -47,7 +46,6 @@ const StreamingInfoTable = ({
   enablePagination = false,
 }: IStreamingInfoTableProps) => {
   const theme = useTheme();
-  const isTabletOrMobile = useIsTabletOrMobileMedia();
   const { filters, updateFilters } = useDashboard();
 
   const [tableConfig, setTableConfig] = useImmer<ITableConfigImmerState>({
@@ -55,7 +53,6 @@ const StreamingInfoTable = ({
       key: "",
       direction: SORTING_DIRECTION.DESC,
     },
-    searchQuery: "",
     currentPage: 1,
     pageSize: 6,
   });
@@ -128,10 +125,6 @@ const StreamingInfoTable = ({
     });
   };
 
-  const handleSelectFilter = (filterKey: string, filterValues: string) => {
-    updateFilters(filterKey, filterValues);
-  };
-
   const paginatedData = sortedData.slice(
     (tableConfig.currentPage - 1) * tableConfig.pageSize,
     tableConfig.currentPage * tableConfig.pageSize
@@ -195,53 +188,6 @@ const StreamingInfoTable = ({
     );
   }
 
-  const renderTableActionsNode = () => {
-    const tableActionsNode: React.ReactNode[] = [];
-
-    const uniqueSongNames = [...new Set(data.map((item) => item.songName))];
-    const uniqueArtists = [...new Set(data.map((item) => item.artist))];
-
-    const songNameFilters = uniqueSongNames.map((songName) => ({
-      label: songName,
-      value: songName,
-    }));
-    const artistFilters = uniqueArtists.map((artist) => ({
-      label: artist,
-      value: artist,
-    }));
-
-    tableActionsNode.push(
-      <Select
-        key="artist-filter"
-        options={artistFilters}
-        placeholder="Select Artist"
-        onChange={(selectedOption) =>
-          handleSelectFilter(
-            DASHBOARD_FILTER_KEYS.ARTIST,
-            (selectedOption as { value: string }).value
-          )
-        }
-      />,
-      <Select
-        key="songName-filter"
-        options={songNameFilters}
-        placeholder="Select Song"
-        onChange={(selectedOption) =>
-          handleSelectFilter(
-            DASHBOARD_FILTER_KEYS.SONG_NAME,
-            (selectedOption as { value: string }).value
-          )
-        }
-      />
-    );
-
-    return (
-      <Flex alignItems="center" style={{ gap: "8px" }}>
-        {tableActionsNode}
-      </Flex>
-    );
-  };
-
   const renderAppliedFiltersNode = () => {
     const appliedFilterNodes: React.ReactNode[] = [];
 
@@ -255,7 +201,7 @@ const StreamingInfoTable = ({
             bg={theme.colors.BG_ACCENT_WEAKER}
             p="2px 8px"
             borderRadius="4px"
-            height="38px"
+            height="28px"
           >
             <ParaXSmall color={theme.colors.TEXT_ACCENT_STRONG}>
               {camelToNormal(key)} -
@@ -275,7 +221,12 @@ const StreamingInfoTable = ({
     });
 
     return (
-      <Flex alignItems="center" style={{ gap: "8px" }} flexWrap="wrap">
+      <Flex
+        alignItems="center"
+        style={{ gap: "8px" }}
+        flexWrap="wrap"
+        mb="12px"
+      >
         {appliedFilterNodes}
       </Flex>
     );
@@ -283,22 +234,13 @@ const StreamingInfoTable = ({
 
   return (
     <>
-      <Flex
-        justifyContent="space-between"
-        mb="16px"
-        style={{ gap: "8px" }}
-        p="2px"
-        flexDirection={isTabletOrMobile ? "column-reverse" : "row"}
-      >
-        {renderAppliedFiltersNode()}
-        {renderTableActionsNode()}
-      </Flex>
-
+      {renderAppliedFiltersNode()}
       <Box minHeight="320px">
         <Table>
           <Table.Head>
             <Table.Tr>
               <Table.StickyCol
+                width="80px"
                 isHeader
                 rightSectionNode={getHeaderCellRightSectionNode("userId")}
               >
@@ -336,16 +278,61 @@ const StreamingInfoTable = ({
                 <Table.Tr
                   key={`${item.songName}-${item.userId}-${item.source}`}
                 >
-                  <Table.StickyCol>
+                  <Table.StickyCol width="80px">
                     <LabelSmallStrong color={theme.colors.TEXT_NEUTRAL_STRONG}>
                       {item.userId}
                     </LabelSmallStrong>
                   </Table.StickyCol>
-                  <Table.Td textBold>{item.songName}</Table.Td>
-                  <Table.Td>{item.artist}</Table.Td>
+                  <Table.Td
+                    rightSectionNode={
+                      <CiFilter
+                        size={16}
+                        cursor="pointer"
+                        onClick={() =>
+                          updateFilters(
+                            DASHBOARD_FILTER_KEYS.SONG_NAME,
+                            item.songName
+                          )
+                        }
+                      />
+                    }
+                  >
+                    {item.songName}
+                  </Table.Td>
+                  <Table.Td
+                    rightSectionNode={
+                      <CiFilter
+                        size={16}
+                        cursor="pointer"
+                        onClick={() =>
+                          updateFilters(
+                            DASHBOARD_FILTER_KEYS.ARTIST,
+                            item.artist
+                          )
+                        }
+                      />
+                    }
+                  >
+                    {item.artist}
+                  </Table.Td>
                   <Table.Td>{item.recentStreamCount}</Table.Td>
                   <Table.Td>{item.dateStreamed}</Table.Td>
-                  <Table.Td>{item.source}</Table.Td>
+                  <Table.Td
+                    rightSectionNode={
+                      <CiFilter
+                        size={16}
+                        cursor="pointer"
+                        onClick={() =>
+                          updateFilters(
+                            DASHBOARD_FILTER_KEYS.REVENUE_SOURCE,
+                            item.source
+                          )
+                        }
+                      />
+                    }
+                  >
+                    {item.source}
+                  </Table.Td>
                 </Table.Tr>
               ))
             ) : (

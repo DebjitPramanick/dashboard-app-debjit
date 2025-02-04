@@ -24,7 +24,6 @@ export const Root = styled(Box)`
   ${mediaQueryMobileOrTablet} {
     max-width: unset;
     width: 100%;
-    border-radius: 0;
     padding: 0;
     border-top: 0;
   }

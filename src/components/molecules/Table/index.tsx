@@ -33,6 +33,7 @@ const DataCell = forwardRef<HTMLTableCellElement, DataCellProps>(
       width,
       textBold,
       textLabelProps,
+      rightSectionNode,
       ...rootProps
     } = props;
     const theme = useTheme();
@@ -60,6 +61,7 @@ const DataCell = forwardRef<HTMLTableCellElement, DataCellProps>(
           >
             {hasChildren ? children : fallbackText}
           </LabelSmall>
+          {rightSectionNode}
         </Styles.CellContent>
       </Styles.DataCell>
     );

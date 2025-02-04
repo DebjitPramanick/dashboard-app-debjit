@@ -11,6 +11,7 @@ export interface DataCellProps {
   width?: string;
   textBold?: boolean;
   textLabelProps?: React.HTMLAttributes<HTMLElement>;
+  rightSectionNode?: React.ReactNode;
 }
 
 export interface HeaderCellProps {
