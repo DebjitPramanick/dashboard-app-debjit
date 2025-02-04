@@ -3,7 +3,7 @@ import { mediaQueryMobileOrTablet } from "~/styles/mixins";
 import { Box } from "~/components/atoms";
 
 export const PageContainer = styled(Box)`
-  max-width: 1248px;
+  max-width: 1648px;
   margin: 0 auto;
   padding-bottom: 104px;
   padding-left: 24px;

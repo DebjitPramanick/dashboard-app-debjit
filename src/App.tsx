@@ -1,10 +1,13 @@
-import "./App.css";
-import { Box } from "~/components/atoms";
+import "@fontsource/manrope";
+
+import DashboardPage from "./pages/dashboard";
+import { GlobalStyles } from "./styles/global.styled";
 
 function App() {
   return (
     <>
-      <Box />
+      <GlobalStyles />
+      <DashboardPage />
     </>
   );
 }

@@ -1,0 +1,141 @@
+{
+  "keyMetrics": {
+    "totalUsers": 12000000,
+    "activeUsers": 8500000,
+    "totalStreams": 450000000,
+    "revenue": {
+      "total": 85000000,
+      "subscriptions": 60000000,
+      "ads": 25000000,
+      "merch": 5000000,
+      "sponsorships": 5000000,
+      "concerts": 3000000
+    },
+    "topArtist": "Drake"
+  },
+  "dataVisualization": {
+    "userGrowth": [
+      { "month": "2022-01", "totalUsers": 3000000, "activeUsers": 2000000 },
+      { "month": "2022-02", "totalUsers": 3500000, "activeUsers": 2300000 },
+      { "month": "2022-03", "totalUsers": 4000000, "activeUsers": 2500000 },
+      { "month": "2022-04", "totalUsers": 4500000, "activeUsers": 2800000 },
+      { "month": "2022-05", "totalUsers": 5000000, "activeUsers": 3200000 },
+      { "month": "2022-06", "totalUsers": 5500000, "activeUsers": 3500000 },
+      { "month": "2022-07", "totalUsers": 6000000, "activeUsers": 3800000 },
+      { "month": "2022-08", "totalUsers": 6500000, "activeUsers": 4200000 },
+      { "month": "2022-09", "totalUsers": 7000000, "activeUsers": 4500000 },
+      { "month": "2022-10", "totalUsers": 7500000, "activeUsers": 5000000 },
+      { "month": "2022-11", "totalUsers": 8000000, "activeUsers": 5500000 },
+      { "month": "2022-12", "totalUsers": 8500000, "activeUsers": 6000000 },
+      { "month": "2023-01", "totalUsers": 9000000, "activeUsers": 6500000 },
+      { "month": "2023-02", "totalUsers": 9500000, "activeUsers": 6800000 },
+      { "month": "2023-03", "totalUsers": 10000000, "activeUsers": 7200000 },
+      { "month": "2023-04", "totalUsers": 10500000, "activeUsers": 7500000 },
+      { "month": "2023-05", "totalUsers": 11000000, "activeUsers": 7800000 },
+      { "month": "2023-06", "totalUsers": 11500000, "activeUsers": 8000000 },
+      { "month": "2023-07", "totalUsers": 12000000, "activeUsers": 8500000 }
+    ],
+    "revenueDistribution": [
+      { "source": "Subscriptions", "amount": 60000000 },
+      { "source": "Ads", "amount": 25000000 },
+      { "source": "Merch", "amount": 5000000 },
+      { "source": "Sponsorships", "amount": 5000000 },
+      { "source": "Concerts", "amount": 3000000 }
+    ],
+    "top5StreamedSongs": [
+      { "songName": "One Dance", "artist": "Drake", "streamCount": 10000000 },
+      {
+        "songName": "Blinding Lights",
+        "artist": "The Weeknd",
+        "streamCount": 9500000
+      },
+      {
+        "songName": "Shape of You",
+        "artist": "Ed Sheeran",
+        "streamCount": 9200000
+      },
+      {
+        "songName": "Levitating",
+        "artist": "Dua Lipa",
+        "streamCount": 8700000
+      },
+      {
+        "songName": "Save Your Tears",
+        "artist": "The Weeknd",
+        "streamCount": 8500000
+      }
+    ]
+  },
+  "dataTable": [
+    {
+      "songName": "One Dance",
+      "artist": "Drake",
+      "dateStreamed": "2025-02-01",
+      "streamCount": 5,
+      "userId": 101
+    },
+    {
+      "songName": "Blinding Lights",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-02-01",
+      "streamCount": 3,
+      "userId": 102
+    },
+    {
+      "songName": "Shape of You",
+      "artist": "Ed Sheeran",
+      "dateStreamed": "2025-02-02",
+      "streamCount": 4,
+      "userId": 103
+    },
+    {
+      "songName": "Levitating",
+      "artist": "Dua Lipa",
+      "dateStreamed": "2025-02-02",
+      "streamCount": 2,
+      "userId": 104
+    },
+    {
+      "songName": "Save Your Tears",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-02-03",
+      "streamCount": 6,
+      "userId": 105
+    },
+    {
+      "songName": "Sunflower",
+      "artist": "Post Malone",
+      "dateStreamed": "2025-02-03",
+      "streamCount": 7,
+      "userId": 106
+    },
+    {
+      "songName": "Believer",
+      "artist": "Imagine Dragons",
+      "dateStreamed": "2025-02-04",
+      "streamCount": 8,
+      "userId": 107
+    },
+    {
+      "songName": "Bad Guy",
+      "artist": "Billie Eilish",
+      "dateStreamed": "2025-02-04",
+      "streamCount": 3,
+      "userId": 108
+    },
+    {
+      "songName": "Senorita",
+      "artist": "Shawn Mendes",
+      "dateStreamed": "2025-02-05",
+      "streamCount": 4,
+      "userId": 109
+    },
+    {
+      "songName": "Rockstar",
+      "artist": "DaBaby",
+      "dateStreamed": "2025-02-05",
+      "streamCount": 5,
+      "userId": 110
+    }
+  ]
+}
