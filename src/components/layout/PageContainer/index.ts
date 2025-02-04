@@ -10,6 +10,7 @@ export const PageContainer = styled(Box)`
   padding-right: 24px;
 
   ${mediaQueryMobileOrTablet} {
+    max-width: unset;
     padding-bottom: 88px;
     padding-left: 20px;
     padding-right: 20px;
