@@ -51,11 +51,7 @@ const DashboardPage = () => {
         </Styles.CardsContainer>
         <Card title="Table" description="Table of users" mt="24px">
           <Box overflowX="auto">
-            <StreamingInfoTable
-              data={usersStreamingInfo}
-              enablePagination
-              enableFilters
-            />
+            <StreamingInfoTable data={usersStreamingInfo} enablePagination />
           </Box>
         </Card>
       </Styles.Container>
