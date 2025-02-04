@@ -125,7 +125,7 @@ export const DataCell = styled(Box).attrs({ as: "td" })<DataCellProps>`
 export const HeaderCell = styled(Box).attrs({ as: "th" })`
   min-width: ${({ width }) => width};
   padding: 16px;
-  background-color: ${({ theme }) => theme.colors.BG_NEUTRAL_WEAKER};
+  background-color: ${({ theme }) => theme.colors.BG_NEUTRAL_WEAKEST};
   border: none;
   font-weight: ${({ theme }) => theme.fontWeights.regular};
   text-align: center;

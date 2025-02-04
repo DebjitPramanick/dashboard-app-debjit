@@ -3,15 +3,11 @@ import { useImmer } from "use-immer";
 import { Table } from "~/components/molecules";
 import { LabelSmallStrong, ParaSmall } from "~/components/typography";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+
 import { Box, Flex } from "~/components/atoms";
 import Select from "react-select";
-interface IStreamingInfoTableData {
-  userId: number;
-  songName: string;
-  artist: string;
-  streamCount: number;
-  dateStreamed: string;
-}
+import { IStreamingInfoTableData } from "../../types";
 
 interface IStreamingInfoTableProps {
   data: IStreamingInfoTableData[];
@@ -169,17 +165,21 @@ const StreamingInfoTable = ({
 
   if (enablePagination && paginatedData.length > 0) {
     paginationNode = (
-      <Flex justifyContent="flex-end" mt="24px">
-        <ParaSmall mr="8px">
+      <Flex justifyContent="flex-end" alignItems="center" mt="24px">
+        <MdKeyboardArrowLeft
+          size={24}
+          cursor="pointer"
+          onClick={() => handlePageChange(tableConfig.currentPage - 1)}
+        />
+        <ParaSmall mx="8px">
           Page {tableConfig.currentPage} of{" "}
           {Math.ceil(sortedData.length / tableConfig.pageSize)}
         </ParaSmall>
-        <button onClick={() => handlePageChange(tableConfig.currentPage - 1)}>
-          Previous
-        </button>
-        <button onClick={() => handlePageChange(tableConfig.currentPage + 1)}>
-          Next
-        </button>
+        <MdKeyboardArrowRight
+          size={24}
+          cursor="pointer"
+          onClick={() => handlePageChange(tableConfig.currentPage + 1)}
+        />
       </Flex>
     );
   }
@@ -240,12 +240,7 @@ const StreamingInfoTable = ({
   return (
     <>
       {tableActionsNode.length ? (
-        <Flex
-          justifyContent="flex-end"
-          mt="24px"
-          mb="16px"
-          style={{ gap: "8px" }}
-        >
+        <Flex justifyContent="flex-end" mb="16px" style={{ gap: "8px" }}>
           {tableActionsNode}
         </Flex>
       ) : null}
@@ -274,7 +269,9 @@ const StreamingInfoTable = ({
               </Table.Th>
               <Table.Th
                 width="104px"
-                rightSectionNode={getHeaderCellRightSectionNode("streamCount")}
+                rightSectionNode={getHeaderCellRightSectionNode(
+                  "recentStreamCount"
+                )}
               >
                 Stream Count
               </Table.Th>
@@ -298,7 +295,7 @@ const StreamingInfoTable = ({
                   </Table.StickyCol>
                   <Table.Td textBold>{item.songName}</Table.Td>
                   <Table.Td>{item.artist}</Table.Td>
-                  <Table.Td>{item.streamCount}</Table.Td>
+                  <Table.Td>{item.recentStreamCount}</Table.Td>
                   <Table.Td>{item.dateStreamed}</Table.Td>
                 </Table.Tr>
               ))

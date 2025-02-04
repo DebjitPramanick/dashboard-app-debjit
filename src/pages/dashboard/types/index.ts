@@ -19,6 +19,7 @@ export type IStreamingInfoTableData = {
   userId: number;
   songName: string;
   artist: string;
-  streamCount: number;
+  recentStreamCount: number;
   dateStreamed: string;
+  source: string;
 };

@@ -71,99 +71,113 @@
       "songName": "One Dance",
       "artist": "Drake",
       "dateStreamed": "2025-02-01",
-      "streamCount": 5,
-      "userId": 101
+      "recentStreamCount": 5,
+      "userId": 101,
+      "source": "Subscriptions"
     },
     {
       "songName": "Blinding Lights",
       "artist": "The Weeknd",
       "dateStreamed": "2025-02-01",
-      "streamCount": 3,
-      "userId": 102
+      "recentStreamCount": 3,
+      "userId": 102,
+      "source": "Ads"
     },
     {
       "songName": "Shape of You",
       "artist": "Ed Sheeran",
       "dateStreamed": "2025-02-02",
-      "streamCount": 4,
-      "userId": 103
+      "recentStreamCount": 4,
+      "userId": 103,
+      "source": "Merch"
     },
     {
       "songName": "Levitating",
       "artist": "Dua Lipa",
       "dateStreamed": "2025-02-02",
-      "streamCount": 2,
-      "userId": 104
+      "recentStreamCount": 2,
+      "userId": 104,
+      "source": "Sponsorships"
     },
     {
       "songName": "Save Your Tears",
       "artist": "The Weeknd",
       "dateStreamed": "2025-02-03",
-      "streamCount": 6,
-      "userId": 105
+      "recentStreamCount": 6,
+      "userId": 105,
+      "source": "Concerts"
     },
     {
       "songName": "Sunflower",
       "artist": "Post Malone",
       "dateStreamed": "2025-02-03",
-      "streamCount": 7,
-      "userId": 106
+      "recentStreamCount": 7,
+      "userId": 106,
+      "source": "Subscriptions"
     },
     {
       "songName": "Believer",
       "artist": "Imagine Dragons",
       "dateStreamed": "2025-02-04",
-      "streamCount": 8,
-      "userId": 107
+      "recentStreamCount": 8,
+      "userId": 107,
+      "source": "Ads"
     },
     {
       "songName": "Bad Guy",
       "artist": "Billie Eilish",
       "dateStreamed": "2025-02-04",
-      "streamCount": 3,
-      "userId": 108
+      "recentStreamCount": 3,
+      "userId": 108,
+      "source": "Merch"
     },
     {
       "songName": "Senorita",
       "artist": "Shawn Mendes",
       "dateStreamed": "2025-02-05",
-      "streamCount": 4,
-      "userId": 109
+      "recentStreamCount": 4,
+      "userId": 109,
+      "source": "Sponsorships"
     },
     {
       "songName": "Rockstar",
       "artist": "DaBaby",
       "dateStreamed": "2025-02-05",
-      "streamCount": 5,
-      "userId": 110
+      "recentStreamCount": 5,
+      "userId": 110,
+      "source": "Subscriptions"
     },
     {
       "songName": "Night Changes",
       "artist": "One Direction",
       "dateStreamed": "2025-02-06",
-      "streamCount": 6,
-      "userId": 111
+      "recentStreamCount": 6,
+      "userId": 111,
+      "source": "Ads"
     },
     {
       "songName": "Old Town Road",
       "artist": "Lil Nas X",
       "dateStreamed": "2025-02-06",
-      "streamCount": 7,
-      "userId": 112
+      "recentStreamCount": 7,
+      "userId": 112,
+      "source": "Merch"
     },
     {
       "songName": "Funk Universo",
       "artist": "The Weeknd",
       "dateStreamed": "2025-02-07",
-      "streamCount": 8,
-      "userId": 113
+      "recentStreamCount": 8,
+      "userId": 113,
+      "source": "Sponsorships"
     },
     {
       "songName": "Danza Kuduro",
       "artist": "Don Omar",
       "dateStreamed": "2025-02-07",
-      "streamCount": 9,
-      "userId": 114
+      "recentStreamCount": 9,
+      "userId": 114,
+      "source": "Subscriptions"
     }
   ]
 }
