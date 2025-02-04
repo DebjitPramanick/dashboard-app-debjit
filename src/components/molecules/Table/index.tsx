@@ -14,13 +14,10 @@ import {
 } from "./types";
 
 const BaseTable = forwardRef<HTMLTableElement, TableProps>((props, ref) => {
-  const { children, displayTitle, tableProps, ...rootProps } = props;
+  const { children, tableProps, ...rootProps } = props;
 
   return (
     <Styles.Root ref={ref} {...rootProps}>
-      {displayTitle ? (
-        <Styles.TableTitle>{displayTitle}</Styles.TableTitle>
-      ) : null}
       <Box style={{ overflowX: "auto" }}>
         <Styles.Table {...tableProps}>{children}</Styles.Table>
       </Box>
@@ -32,7 +29,6 @@ const DataCell = forwardRef<HTMLTableCellElement, DataCellProps>(
   (props, ref) => {
     const {
       children,
-      caption,
       fallbackText = "not enough data",
       width,
       textBold,
@@ -64,9 +60,6 @@ const DataCell = forwardRef<HTMLTableCellElement, DataCellProps>(
           >
             {hasChildren ? children : fallbackText}
           </LabelSmall>
-          {caption ? (
-            <Styles.CellCaptionText>{caption}</Styles.CellCaptionText>
-          ) : null}
         </Styles.CellContent>
       </Styles.DataCell>
     );
@@ -95,7 +88,6 @@ const StickyCol = forwardRef<HTMLTableCellElement, StickyColProps>(
   (props, ref) => {
     const {
       children,
-      caption,
       isHeader,
       fallbackText = "not enough data",
       left,
@@ -145,9 +137,6 @@ const StickyCol = forwardRef<HTMLTableCellElement, StickyColProps>(
               >
                 {hasChildren ? children : fallbackText}
               </LabelSmall>
-              {caption ? (
-                <Styles.CellCaptionText>{caption}</Styles.CellCaptionText>
-              ) : null}
             </Styles.CellContent>
           </Styles.StickyDataCell>
         )}
@@ -171,15 +160,15 @@ const Table = Object.assign(BaseTable, {
 });
 
 HeaderCell.defaultProps = {
-  width: "100px",
+  width: "160px",
 };
 
 DataCell.defaultProps = {
-  width: "100px",
+  width: "160px",
 };
 
 StickyCol.defaultProps = {
-  width: "100px",
+  width: "120px",
 };
 
 export default Table;

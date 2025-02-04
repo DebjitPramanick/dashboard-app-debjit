@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
 import { Box, Flex } from "~/components/atoms";
-import { LabelSmall, LabelXSmall } from "~/components/typography";
-import { mediaQueryMobile, mediaQueryMobileOrTablet } from "~/styles/mixins";
+import { LabelSmall } from "~/components/typography";
+import { mediaQueryMobileOrTablet } from "~/styles/mixins";
 import { DataCellProps } from "./types";
 
 export const stickyColCss = css`
@@ -24,14 +24,9 @@ export const Root = styled(Box)`
   ${mediaQueryMobileOrTablet} {
     max-width: unset;
     width: 100%;
-    margin-left: -36px;
     border-radius: 0;
     padding: 0;
     border-top: 0;
-  }
-
-  ${mediaQueryMobile} {
-    margin-left: -20px;
   }
 `;
 
@@ -47,30 +42,6 @@ export const CellContent = styled(Flex)`
   height: 100%;
   align-items: center;
   justify-content: space-between;
-`;
-
-export const CellCaptionText = styled(LabelXSmall)`
-  margin-top: 8px;
-  color: ${({ theme }) => theme.colors.TEXT_NEUTRAL_WEAKER};
-
-  ${mediaQueryMobileOrTablet} {
-    margin-top: 12px;
-  }
-`;
-
-export const TableTitle = styled(LabelSmall)`
-  color: ${({ theme }) => theme.colors.TEXT_NEUTRAL_NORMAL};
-  text-align: center;
-  margin: 16px 0px;
-
-  ${mediaQueryMobileOrTablet} {
-    margin: 8px 36px 20px;
-    text-align: left;
-  }
-
-  ${mediaQueryMobile} {
-    margin-left: 20px;
-  }
 `;
 
 export const DataCell = styled(Box).attrs({ as: "td" })<DataCellProps>`
@@ -104,20 +75,10 @@ export const DataCell = styled(Box).attrs({ as: "td" })<DataCellProps>`
     padding: 0px 8px;
     border-bottom: none;
 
-    &:first-child {
-      padding-left: 36px;
-    }
-
     ${CellContent} {
       padding: 12px 0px;
       border-bottom: 1px solid
         ${({ theme }) => theme.colors.BORDER_NEUTRAL_WEAK};
-    }
-  }
-
-  ${mediaQueryMobile} {
-    &:first-child {
-      padding-left: 20px;
     }
   }
 `;
@@ -143,11 +104,8 @@ export const HeaderCell = styled(Box).attrs({ as: "th" })`
     border-top: 1px solid ${({ theme }) => theme.colors.BORDER_NEUTRAL_WEAK};
     border-right: 1px solid ${({ theme }) => theme.colors.BG_NEUTRAL_WEAK};
     border-bottom: 1px solid ${({ theme }) => theme.colors.BORDER_NEUTRAL_WEAK};
-
-    &:first-child {
-      padding-left: 36px;
-      border-radius: 0;
-    }
+    white-space: nowrap;
+    overflow: hidden;
 
     &:last-child {
       border-right: 0;
@@ -156,12 +114,6 @@ export const HeaderCell = styled(Box).attrs({ as: "th" })`
 
     ${CellContent} {
       padding: 16px 0 12px;
-    }
-  }
-
-  ${mediaQueryMobile} {
-    &:first-child {
-      padding-left: 20px;
     }
   }
 `;

@@ -303,19 +303,16 @@ const StreamingInfoTable = ({
                 User ID
               </Table.StickyCol>
               <Table.Th
-                width="104px"
                 rightSectionNode={getHeaderCellRightSectionNode("songName")}
               >
                 Song Name
               </Table.Th>
               <Table.Th
-                width="104px"
                 rightSectionNode={getHeaderCellRightSectionNode("artist")}
               >
                 Artist
               </Table.Th>
               <Table.Th
-                width="104px"
                 rightSectionNode={getHeaderCellRightSectionNode(
                   "recentStreamCount"
                 )}
@@ -323,11 +320,11 @@ const StreamingInfoTable = ({
                 Stream Count
               </Table.Th>
               <Table.Th
-                width="104px"
                 rightSectionNode={getHeaderCellRightSectionNode("dateStreamed")}
               >
                 Date Streamed
               </Table.Th>
+              <Table.Th>Revenue Source</Table.Th>
             </Table.Tr>
           </Table.Head>
 
@@ -344,11 +341,12 @@ const StreamingInfoTable = ({
                   <Table.Td>{item.artist}</Table.Td>
                   <Table.Td>{item.recentStreamCount}</Table.Td>
                   <Table.Td>{item.dateStreamed}</Table.Td>
+                  <Table.Td>{item.source}</Table.Td>
                 </Table.Tr>
               ))
             ) : (
               <Table.Tr>
-                <Table.Td>No data</Table.Td>
+                <Table.StickyCol>No data</Table.StickyCol>
               </Table.Tr>
             )}
           </Table.Body>
