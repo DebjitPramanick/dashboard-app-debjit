@@ -39,6 +39,7 @@ const Card = ({
 export default Card;
 
 export const Root = styled(Box)`
+  width: 100%;
   background-color: ${colors.BG_SURFACE};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);

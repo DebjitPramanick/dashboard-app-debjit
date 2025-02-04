@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Box, Flex } from "~/components/atoms";
 import { PageContainer } from "~/components/layout";
 import colors from "~/styles/colors";
+import { mediaQueryMobileOrTablet } from "~/styles/mixins";
 
 export const Root = styled(Box)`
   background-color: ${colors.BG_NEUTRAL_WEAKEST};
@@ -16,6 +17,10 @@ export const CardsContainer = styled(Flex)`
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+
+  ${mediaQueryMobileOrTablet} {
+    flex-direction: column;
+  }
 `;
 
 export const Divider = styled(Box)`

@@ -7,6 +7,8 @@ import dummyData from "~/constants/dummy.json";
 import Card from "./components/Card";
 import { ParaMedium, TitleMedium } from "~/components/typography";
 import { useTheme } from "styled-components";
+import { Box } from "~/components/atoms";
+import StreamingInfoTable from "./components/StreamingInfoTable";
 
 const DashboardPage = () => {
   const theme = useTheme();
@@ -27,6 +29,8 @@ const DashboardPage = () => {
 
   const topSteamsDataToVisualize =
     dummyData.dataVisualization.top5StreamedSongs;
+
+  const usersStreamingInfo = dummyData.dataTable;
 
   return (
     <Styles.Root>
@@ -59,7 +63,13 @@ const DashboardPage = () => {
           </Card>
         </Styles.CardsContainer>
         <Card title="Table" description="Table of users" mt="24px">
-          Table
+          <Box overflowX="auto">
+            <StreamingInfoTable
+              data={usersStreamingInfo}
+              enableSearch
+              enablePagination
+            />
+          </Box>
         </Card>
       </Styles.Container>
     </Styles.Root>
