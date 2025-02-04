@@ -250,7 +250,7 @@ const StreamingInfoTable = ({
         </Flex>
       ) : null}
 
-      <Box minHeight="400px">
+      <Box minHeight="320px">
         <Table>
           <Table.Head>
             <Table.Tr>

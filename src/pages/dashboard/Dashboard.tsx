@@ -22,10 +22,7 @@ const DashboardPage = () => {
   );
 
   const revenueDistributionDataToVisualize =
-    dummyData.dataVisualization.revenueDistribution.map((item) => ({
-      name: item.source,
-      value: item.amount,
-    }));
+    dummyData.dataVisualization.revenueDistribution;
 
   const topSteamsDataToVisualize =
     dummyData.dataVisualization.top5StreamedSongs;
@@ -52,12 +49,13 @@ const DashboardPage = () => {
             description="Revenue generated from different sources"
             flex="1"
           >
-            <PieChart data={revenueDistributionDataToVisualize} />
+            <PieChart data={revenueDistributionDataToVisualize} enableFilters />
           </Card>
           <Card
             title="Top 5 Streamed Songs"
             description="Top songs streamed by users"
             flex="1"
+            height="100%"
           >
             <BarChart data={topSteamsDataToVisualize} />
           </Card>

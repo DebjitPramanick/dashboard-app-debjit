@@ -14,8 +14,8 @@ export const Root = styled(Box)`
 export const Container = styled(PageContainer)``;
 
 export const CardsContainer = styled(Flex)`
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 
   ${mediaQueryMobileOrTablet} {
