@@ -4,8 +4,13 @@ import PieChart from "./components/PieChart";
 import * as Styles from "./Dashboard.styled";
 
 import dummyData from "~/constants/dummy.json";
+import Card from "./components/Card";
+import { ParaMedium, TitleMedium } from "~/components/typography";
+import { useTheme } from "styled-components";
 
 const DashboardPage = () => {
+  const theme = useTheme();
+
   const topUsersDataToVisualize = dummyData.dataVisualization.userGrowth.map(
     (item) => ({
       name: item.month,
@@ -26,18 +31,36 @@ const DashboardPage = () => {
   return (
     <Styles.Root>
       <Styles.Container>
-        <Styles.Card>
+        <TitleMedium>Streamify Dashboard</TitleMedium>
+        <ParaMedium mt="8px" color={theme.colors.TEXT_NEUTRAL_WEAK}>
+          Analytics and insights for your music streaming platform
+        </ParaMedium>
+        <Card
+          title="User Growth"
+          description="Total users and active users"
+          mt="32px"
+        >
           <LineChart data={topUsersDataToVisualize} />
-        </Styles.Card>
+        </Card>
         <Styles.CardsContainer mt="24px">
-          <Styles.Card flex="1">
+          <Card
+            title="Revenue Distribution"
+            description="Revenue generated from different sources"
+            flex="1"
+          >
             <PieChart data={revenueDistributionDataToVisualize} />
-          </Styles.Card>
-          <Styles.Card flex="1">
+          </Card>
+          <Card
+            title="Top 5 Streamed Songs"
+            description="Top songs streamed by users"
+            flex="1"
+          >
             <BarChart data={topSteamsDataToVisualize} />
-          </Styles.Card>
+          </Card>
         </Styles.CardsContainer>
-        <Styles.Card mt="24px">Table</Styles.Card>
+        <Card title="Table" description="Table of users" mt="24px">
+          Table
+        </Card>
       </Styles.Container>
     </Styles.Root>
   );

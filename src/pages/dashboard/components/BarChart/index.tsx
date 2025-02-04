@@ -1,23 +1,41 @@
 import {
   Bar,
   BarChart as RechartsBarChart,
-  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
+  ReferenceArea,
 } from "recharts";
+import { useTheme } from "styled-components";
 import colors from "~/styles/colors";
+import { formatNumber } from "~/utils";
 
 const BarChart = ({ data }: { data: any[] }) => {
+  const theme = useTheme();
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <RechartsBarChart height={250} data={data}>
-        <XAxis dataKey="songName" />
-        <YAxis dataKey="streamCount" />
+      <RechartsBarChart data={data}>
+        <XAxis
+          dataKey="songName"
+          axisLine={false}
+          tickLine={false}
+          tickMargin={16}
+          tick={{ fontSize: 12 }}
+        />
+        <YAxis
+          dataKey="streamCount"
+          axisLine={false}
+          tick={{ textAnchor: "middle", fontSize: 12 }}
+          tickMargin={24}
+          tickFormatter={formatNumber}
+        />
         <Tooltip />
-        <Legend />
         <Bar dataKey="streamCount" fill={colors.BG_BRAND_WEAK} />
+        <ReferenceArea
+          strokeOpacity={0.3}
+          fill={theme.colors.BG_NEUTRAL_WEAKEST}
+        />
       </RechartsBarChart>
     </ResponsiveContainer>
   );

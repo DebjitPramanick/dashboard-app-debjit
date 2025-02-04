@@ -12,15 +12,14 @@ export const Root = styled(Box)`
 
 export const Container = styled(PageContainer)``;
 
-export const Card = styled(Box)`
-  background-color: ${colors.BG_SURFACE};
-  border-radius: 8px;
-  padding: 24px;
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
-`;
-
 export const CardsContainer = styled(Flex)`
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+`;
+
+export const Divider = styled(Box)`
+  height: 1px;
+  width: 100%;
+  background-color: ${colors.BG_NEUTRAL_WEAK};
 `;

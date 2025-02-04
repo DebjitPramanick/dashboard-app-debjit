@@ -20,7 +20,12 @@ const PieChart = ({ data }: { data: any[] }) => {
 
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <RechartsPieChart width={730} height={250}>
+      <RechartsPieChart>
+        <Legend
+          verticalAlign="top"
+          align="right"
+          wrapperStyle={{ top: 0, right: 10, fontSize: "12px" }}
+        />
         <Pie
           data={data}
           dataKey="value"
@@ -39,7 +44,6 @@ const PieChart = ({ data }: { data: any[] }) => {
           ))}
         </Pie>
         <Tooltip />
-        <Legend />
       </RechartsPieChart>
     </ResponsiveContainer>
   );

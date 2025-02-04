@@ -9,7 +9,6 @@ export const titleLargeCss = css`
   font-size: 40px;
   line-height: 48px;
   letter-spacing: -0.02em;
-  font-family: ${(p) => p.theme.fontFamilies.heading};
   font-weight: ${(p) => p.theme.fontWeights.semiBold};
 
   ${mediaQuerySmallScreen} {
@@ -31,7 +30,6 @@ export const titleMediumCss = css`
   font-size: 32px;
   line-height: 40px;
   letter-spacing: -0.015em;
-  font-family: ${(p) => p.theme.fontFamilies.heading};
   font-weight: ${(p) => p.theme.fontWeights.semiBold};
 
   ${mediaQuerySmallScreen} {
@@ -52,7 +50,6 @@ export const titleSmallCss = css`
   font-size: 24px;
   line-height: 28px;
   letter-spacing: -0.015em;
-  font-family: ${(p) => p.theme.fontFamilies.heading};
   font-weight: ${(p) => p.theme.fontWeights.semiBold};
 
   ${mediaQuerySmallScreen} {
@@ -73,7 +70,6 @@ export const paraLargeCss = css`
   font-size: 18px;
   line-height: 28px;
   letter-spacing: -0.015em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.regular};
 
   ${mediaQuerySmallScreen} {
@@ -98,7 +94,6 @@ export const paraMediumCss = css`
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.015em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.regular};
 
   ${mediaQuerySmallScreen} {
@@ -123,7 +118,6 @@ export const paraSmallCss = css`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.015em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.regular};
 
   ${mediaQuerySmallScreen} {
@@ -148,7 +142,6 @@ export const paraXSmallCss = css`
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.015em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.regular};
 
   ${mediaQuerySmallScreen} {
@@ -173,7 +166,6 @@ export const labelLargeCss = css`
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.01em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.medium};
 
   ${mediaQuerySmallScreen} {
@@ -198,7 +190,6 @@ export const labelMediumCss = css`
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.01em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.medium};
 
   ${mediaQuerySmallScreen} {
@@ -223,7 +214,6 @@ export const labelSmallCss = css`
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.01em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.medium};
 
   ${mediaQuerySmallScreen} {
@@ -248,7 +238,6 @@ export const labelXSmallCss = css`
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.01em;
-  font-family: ${(p) => p.theme.fontFamilies.base};
   font-weight: ${(p) => p.theme.fontWeights.medium};
 
   ${mediaQuerySmallScreen} {
