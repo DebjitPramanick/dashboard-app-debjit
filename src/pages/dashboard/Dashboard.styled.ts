@@ -23,6 +23,14 @@ export const CardsContainer = styled(Flex)`
   }
 `;
 
+export const KeyMetricsContainer = styled(Flex)`
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.BG_SURFACE};
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.1);
+`;
+
 export const Divider = styled(Box)`
   height: 1px;
   width: 100%;

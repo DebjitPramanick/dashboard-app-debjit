@@ -76,8 +76,6 @@ const StreamingInfoTable = ({
       items = items.filter((item) => item.artist === artistFilter);
     }
 
-    console.log("Filtered data", items);
-
     return items;
   })();
 
@@ -166,7 +164,7 @@ const StreamingInfoTable = ({
 
   if (enablePagination && paginatedData.length > 0) {
     paginationNode = (
-      <Flex justifyContent="flex-end" alignItems="center" mt="24px">
+      <Flex justifyContent="flex-end" alignItems="center" mt="12px">
         <ParaSmall mr="8px">
           Showing {paginatedData.length} of {sortedData.length}
         </ParaSmall>
@@ -235,7 +233,7 @@ const StreamingInfoTable = ({
   return (
     <>
       {renderAppliedFiltersNode()}
-      <Box minHeight="320px">
+      <Box minHeight="300px">
         <Table>
           <Table.Head>
             <Table.Tr>
