@@ -45,8 +45,7 @@ const RevenueDistributionChart = ({
             cx="50%"
             cy="50%"
             outerRadius={180}
-            fill="#8884d8"
-            stroke="#fff"
+            style={{ outline: "none" }}
           >
             {data.map((_entry, index) => (
               <Cell

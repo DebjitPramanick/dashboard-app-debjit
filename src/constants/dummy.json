@@ -71,7 +71,7 @@
       "songName": "God's Plan",
       "artist": "Drake",
       "dateStreamed": "2025-02-04",
-      "recentStreamCount": 1,
+      "recentStreamCount": 7,
       "userId": 123401,
       "source": "Subscriptions"
     },
@@ -79,7 +79,7 @@
       "songName": "Blinding Lights",
       "artist": "The Weeknd",
       "dateStreamed": "2025-02-03",
-      "recentStreamCount": 1,
+      "recentStreamCount": 2,
       "userId": 123402,
       "source": "Ads"
     },
@@ -87,7 +87,7 @@
       "songName": "Peaches",
       "artist": "Justin Bieber",
       "dateStreamed": "2025-02-02",
-      "recentStreamCount": 1,
+      "recentStreamCount": 16,
       "userId": 123403,
       "source": "Merch"
     },
@@ -95,7 +95,7 @@
       "songName": "Stay",
       "artist": "The Kid LAROI",
       "dateStreamed": "2025-02-01",
-      "recentStreamCount": 1,
+      "recentStreamCount": 5,
       "userId": 123404,
       "source": "Sponsorships"
     },
@@ -103,7 +103,7 @@
       "songName": "Levitating",
       "artist": "Dua Lipa",
       "dateStreamed": "2025-01-31",
-      "recentStreamCount": 1,
+      "recentStreamCount": 9,
       "userId": 123405,
       "source": "Concerts"
     },
@@ -119,7 +119,7 @@
       "songName": "Shape of You",
       "artist": "Ed Sheeran",
       "dateStreamed": "2025-01-29",
-      "recentStreamCount": 1,
+      "recentStreamCount": 7,
       "userId": 123407,
       "source": "Ads"
     },
@@ -127,7 +127,7 @@
       "songName": "Save Your Tears",
       "artist": "The Weeknd",
       "dateStreamed": "2025-01-28",
-      "recentStreamCount": 1,
+      "recentStreamCount": 4,
       "userId": 123408,
       "source": "Merch"
     },
@@ -135,7 +135,7 @@
       "songName": "Sunflower",
       "artist": "Post Malone",
       "dateStreamed": "2025-01-27",
-      "recentStreamCount": 1,
+      "recentStreamCount": 10,
       "userId": 123409,
       "source": "Sponsorships"
     },
@@ -151,7 +151,7 @@
       "songName": "God's Plan",
       "artist": "Drake",
       "dateStreamed": "2025-01-25",
-      "recentStreamCount": 1,
+      "recentStreamCount": 13,
       "userId": 123411,
       "source": "Subscriptions"
     },
@@ -159,7 +159,7 @@
       "songName": "Blinding Lights",
       "artist": "The Weeknd",
       "dateStreamed": "2025-01-24",
-      "recentStreamCount": 1,
+      "recentStreamCount": 12,
       "userId": 123412,
       "source": "Ads"
     },
@@ -167,7 +167,7 @@
       "songName": "Peaches",
       "artist": "Justin Bieber",
       "dateStreamed": "2025-01-23",
-      "recentStreamCount": 1,
+      "recentStreamCount": 7,
       "userId": 123413,
       "source": "Merch"
     },
@@ -199,7 +199,7 @@
       "songName": "Shape of You",
       "artist": "Ed Sheeran",
       "dateStreamed": "2025-01-19",
-      "recentStreamCount": 1,
+      "recentStreamCount": 8,
       "userId": 123417,
       "source": "Ads"
     },
@@ -223,7 +223,7 @@
       "songName": "Senorita",
       "artist": "Shawn Mendes",
       "dateStreamed": "2025-01-16",
-      "recentStreamCount": 1,
+      "recentStreamCount": 5,
       "userId": 123420,
       "source": "Concerts"
     },
@@ -239,7 +239,7 @@
       "songName": "Levitating",
       "artist": "Dua Lipa",
       "dateStreamed": "2025-01-14",
-      "recentStreamCount": 1,
+      "recentStreamCount": 6,
       "userId": 123422,
       "source": "Ads"
     },
@@ -247,7 +247,7 @@
       "songName": "Blinding Lights",
       "artist": "The Weeknd",
       "dateStreamed": "2025-01-13",
-      "recentStreamCount": 1,
+      "recentStreamCount": 3,
       "userId": 123423,
       "source": "Merch"
     },
@@ -255,7 +255,7 @@
       "songName": "One Dance",
       "artist": "Drake",
       "dateStreamed": "2025-01-12",
-      "recentStreamCount": 1,
+      "recentStreamCount": 4,
       "userId": 123424,
       "source": "Sponsorships"
     },
@@ -263,7 +263,7 @@
       "songName": "Shape of You",
       "artist": "Ed Sheeran",
       "dateStreamed": "2025-01-11",
-      "recentStreamCount": 1,
+      "recentStreamCount": 6,
       "userId": 123425,
       "source": "Concerts"
     },
@@ -271,7 +271,7 @@
       "songName": "Save Your Tears",
       "artist": "The Weeknd",
       "dateStreamed": "2025-01-10",
-      "recentStreamCount": 1,
+      "recentStreamCount": 7,
       "userId": 123426,
       "source": "Subscriptions"
     },
@@ -279,7 +279,7 @@
       "songName": "Sunflower",
       "artist": "Post Malone",
       "dateStreamed": "2025-01-09",
-      "recentStreamCount": 1,
+      "recentStreamCount": 9,
       "userId": 123427,
       "source": "Ads"
     },

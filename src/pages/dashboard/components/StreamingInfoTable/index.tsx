@@ -18,12 +18,12 @@ import { IStreamingInfoTableData } from "../../types";
 import { useDashboard } from "~/contexts/DashboardContext";
 import { DASHBOARD_FILTER_KEYS } from "~/constants";
 import { camelToNormal } from "~/utils";
+import { useIsTabletOrMobileMedia } from "~/hooks";
 
 interface IStreamingInfoTableProps {
   data: IStreamingInfoTableData[];
   enableSorting?: boolean;
   enablePagination?: boolean;
-  enableFilters?: boolean;
 }
 
 interface ITableConfigImmerState {
@@ -45,10 +45,9 @@ const StreamingInfoTable = ({
   data,
   enableSorting = true,
   enablePagination = false,
-
-  enableFilters = false,
 }: IStreamingInfoTableProps) => {
   const theme = useTheme();
+  const isTabletOrMobile = useIsTabletOrMobileMedia();
   const { filters, updateFilters } = useDashboard();
 
   const [tableConfig, setTableConfig] = useImmer<ITableConfigImmerState>({
@@ -60,31 +59,6 @@ const StreamingInfoTable = ({
     currentPage: 1,
     pageSize: 6,
   });
-
-  const numberOfPages = Math.ceil(data.length / tableConfig.pageSize);
-
-  const handleSort = (key: string, dir: "asc" | "desc") => {
-    setTableConfig((draft) => {
-      draft.sortConfig.key = key;
-      draft.sortConfig.direction = dir;
-    });
-  };
-
-  const handlePageChange = (page: number) => {
-    setTableConfig((draft) => {
-      if (page < 1) {
-        page = 1;
-      }
-      if (page > numberOfPages) {
-        page = numberOfPages;
-      }
-      draft.currentPage = page;
-    });
-  };
-
-  const handleSelectFilter = (filterKey: string, filterValues: string) => {
-    updateFilters(filterKey, filterValues);
-  };
 
   const filteredData = (() => {
     let items = [...data];
@@ -133,6 +107,31 @@ const StreamingInfoTable = ({
     }
   );
 
+  const numberOfPages = Math.ceil(sortedData.length / tableConfig.pageSize);
+
+  const handleSort = (key: string, dir: "asc" | "desc") => {
+    setTableConfig((draft) => {
+      draft.sortConfig.key = key;
+      draft.sortConfig.direction = dir;
+    });
+  };
+
+  const handlePageChange = (page: number) => {
+    setTableConfig((draft) => {
+      if (page < 1) {
+        page = 1;
+      }
+      if (page > numberOfPages) {
+        page = numberOfPages;
+      }
+      draft.currentPage = page;
+    });
+  };
+
+  const handleSelectFilter = (filterKey: string, filterValues: string) => {
+    updateFilters(filterKey, filterValues);
+  };
+
   const paginatedData = sortedData.slice(
     (tableConfig.currentPage - 1) * tableConfig.pageSize,
     tableConfig.currentPage * tableConfig.pageSize
@@ -172,8 +171,6 @@ const StreamingInfoTable = ({
 
   let paginationNode = null;
 
-  const tableActionsNode = [];
-
   if (enablePagination && paginatedData.length > 0) {
     paginationNode = (
       <Flex justifyContent="flex-end" alignItems="center" mt="24px">
@@ -198,7 +195,9 @@ const StreamingInfoTable = ({
     );
   }
 
-  if (enableFilters) {
+  const renderTableActionsNode = () => {
+    const tableActionsNode: React.ReactNode[] = [];
+
     const uniqueSongNames = [...new Set(data.map((item) => item.songName))];
     const uniqueArtists = [...new Set(data.map((item) => item.artist))];
 
@@ -213,10 +212,9 @@ const StreamingInfoTable = ({
 
     tableActionsNode.push(
       <Select
-        options={artistFilters}
-        value={filters[DASHBOARD_FILTER_KEYS.ARTIST]}
-        placeholder="Select Artist"
         key="artist-filter"
+        options={artistFilters}
+        placeholder="Select Artist"
         onChange={(selectedOption) =>
           handleSelectFilter(
             DASHBOARD_FILTER_KEYS.ARTIST,
@@ -225,10 +223,9 @@ const StreamingInfoTable = ({
         }
       />,
       <Select
-        options={songNameFilters}
-        value={filters[DASHBOARD_FILTER_KEYS.SONG_NAME]}
-        placeholder="Select Song"
         key="songName-filter"
+        options={songNameFilters}
+        placeholder="Select Song"
         onChange={(selectedOption) =>
           handleSelectFilter(
             DASHBOARD_FILTER_KEYS.SONG_NAME,
@@ -237,7 +234,13 @@ const StreamingInfoTable = ({
         }
       />
     );
-  }
+
+    return (
+      <Flex alignItems="center" style={{ gap: "8px" }}>
+        {tableActionsNode}
+      </Flex>
+    );
+  };
 
   const renderAppliedFiltersNode = () => {
     const appliedFilterNodes: React.ReactNode[] = [];
@@ -272,7 +275,7 @@ const StreamingInfoTable = ({
     });
 
     return (
-      <Flex alignItems="center" style={{ gap: "8px" }}>
+      <Flex alignItems="center" style={{ gap: "8px" }} flexWrap="wrap">
         {appliedFilterNodes}
       </Flex>
     );
@@ -285,11 +288,10 @@ const StreamingInfoTable = ({
         mb="16px"
         style={{ gap: "8px" }}
         p="2px"
+        flexDirection={isTabletOrMobile ? "column-reverse" : "row"}
       >
         {renderAppliedFiltersNode()}
-        <Flex style={{ gap: "8px" }} alignItems="center">
-          {tableActionsNode}
-        </Flex>
+        {renderTableActionsNode()}
       </Flex>
 
       <Box minHeight="320px">
@@ -331,7 +333,9 @@ const StreamingInfoTable = ({
           <Table.Body>
             {paginatedData?.length ? (
               paginatedData.map((item) => (
-                <Table.Tr key={`${item.songName}-${item.userId}`}>
+                <Table.Tr
+                  key={`${item.songName}-${item.userId}-${item.source}`}
+                >
                   <Table.StickyCol>
                     <LabelSmallStrong color={theme.colors.TEXT_NEUTRAL_STRONG}>
                       {item.userId}
