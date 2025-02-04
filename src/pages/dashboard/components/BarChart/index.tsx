@@ -10,6 +10,7 @@ import {
 import { useTheme } from "styled-components";
 import colors from "~/styles/colors";
 import { formatNumber } from "~/utils";
+import ChartToolTipContent from "../ChartToolTip";
 
 const BarChart = ({ data }: { data: any[] }) => {
   const theme = useTheme();
@@ -30,7 +31,7 @@ const BarChart = ({ data }: { data: any[] }) => {
           tickMargin={24}
           tickFormatter={formatNumber}
         />
-        <Tooltip />
+        <Tooltip content={<ChartToolTipContent />} />
         <Bar dataKey="streamCount" fill={colors.BG_BRAND_WEAK} />
         <ReferenceArea
           strokeOpacity={0.3}

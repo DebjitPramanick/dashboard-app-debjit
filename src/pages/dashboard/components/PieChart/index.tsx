@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 import colors from "~/styles/colors";
+import ChartToolTipContent from "../ChartToolTip";
 
 const PieChart = ({ data }: { data: any[] }) => {
   const segmentColors = [
@@ -43,7 +44,7 @@ const PieChart = ({ data }: { data: any[] }) => {
             />
           ))}
         </Pie>
-        <Tooltip />
+        <Tooltip content={<ChartToolTipContent />} />
       </RechartsPieChart>
     </ResponsiveContainer>
   );

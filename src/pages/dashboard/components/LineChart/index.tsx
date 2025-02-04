@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import colors from "~/styles/colors";
 import { formatNumber } from "~/utils";
+import ChartToolTipContent from "../ChartToolTip";
 
 const LineChart = ({ data }: { data: any[] }) => {
   return (
@@ -54,7 +55,7 @@ const LineChart = ({ data }: { data: any[] }) => {
           tick={{ fontSize: 12 }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" vertical={false} />
-        <Tooltip />
+        <Tooltip content={<ChartToolTipContent />} />
       </RechartsLineChart>
     </ResponsiveContainer>
   );
