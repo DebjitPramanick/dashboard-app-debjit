@@ -66,8 +66,8 @@ const DashboardPage = () => {
           <Box overflowX="auto">
             <StreamingInfoTable
               data={usersStreamingInfo}
-              enableSearch
               enablePagination
+              enableFilters
             />
           </Box>
         </Card>

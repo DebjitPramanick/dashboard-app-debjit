@@ -161,15 +161,6 @@ DataCell.displayName = "DataCell";
 HeaderCell.displayName = "HeaderCell";
 StickyCol.displayName = "StickyCol";
 
-interface Table {
-  Td: typeof DataCell;
-  Th: typeof HeaderCell;
-  Tr: typeof Styles.TableRow;
-  Head: typeof Styles.TableHead;
-  Body: typeof Styles.TableBody;
-  StickyCol: typeof StickyCol;
-}
-
 const Table = Object.assign(BaseTable, {
   Td: DataCell,
   Th: HeaderCell,

@@ -3,8 +3,8 @@ import { useImmer } from "use-immer";
 import { Table } from "~/components/molecules";
 import { LabelSmallStrong, ParaSmall } from "~/components/typography";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
-import { Flex } from "~/components/atoms";
-
+import { Box, Flex } from "~/components/atoms";
+import Select from "react-select";
 interface IStreamingInfoTableData {
   userId: number;
   songName: string;
@@ -17,7 +17,7 @@ interface IStreamingInfoTableProps {
   data: IStreamingInfoTableData[];
   enableSorting?: boolean;
   enablePagination?: boolean;
-  enableSearch?: boolean;
+  enableFilters?: boolean;
 }
 
 interface ITableConfigImmerState {
@@ -28,6 +28,7 @@ interface ITableConfigImmerState {
   searchQuery: string;
   currentPage: number;
   pageSize: number;
+  filters: Record<string, string[]>;
 }
 
 const SORTING_DIRECTION = {
@@ -39,7 +40,8 @@ const StreamingInfoTable = ({
   data,
   enableSorting = true,
   enablePagination = false,
-  enableSearch = false,
+
+  enableFilters = false,
 }: IStreamingInfoTableProps) => {
   const theme = useTheme();
 
@@ -48,6 +50,7 @@ const StreamingInfoTable = ({
       key: "",
       direction: SORTING_DIRECTION.DESC,
     },
+    filters: {},
     searchQuery: "",
     currentPage: 1,
     pageSize: 6,
@@ -59,12 +62,6 @@ const StreamingInfoTable = ({
     setTableConfig((draft) => {
       draft.sortConfig.key = key;
       draft.sortConfig.direction = dir;
-    });
-  };
-
-  const handleSearch = (query: string) => {
-    setTableConfig((draft) => {
-      draft.searchQuery = query;
     });
   };
 
@@ -80,9 +77,31 @@ const StreamingInfoTable = ({
     });
   };
 
-  const filteredData = data.filter((item) =>
-    item.songName.toLowerCase().includes(tableConfig.searchQuery.toLowerCase())
-  );
+  const handleSelectFilter = (filterKey: string, filterValues: string[]) => {
+    setTableConfig((draft) => {
+      if (filterValues.length === 0) {
+        delete draft.filters[filterKey];
+      } else {
+        draft.filters[filterKey] = filterValues;
+      }
+    });
+  };
+
+  const filteredData = (() => {
+    let items = [...data];
+    const songNameFilters = tableConfig.filters["songName"] || [];
+    const artistFilters = tableConfig.filters["artist"] || [];
+
+    if (songNameFilters.length > 0) {
+      items = items.filter((item) => songNameFilters.includes(item.songName));
+    }
+
+    if (artistFilters.length > 0) {
+      items = items.filter((item) => artistFilters.includes(item.artist));
+    }
+
+    return items;
+  })();
 
   const sortedData = [...filteredData].sort(
     (
@@ -145,9 +164,10 @@ const StreamingInfoTable = ({
   };
 
   let paginationNode = null;
-  let searchNode = null;
 
-  if (enablePagination) {
+  const tableActionsNode = [];
+
+  if (enablePagination && paginatedData.length > 0) {
     paginationNode = (
       <Flex justifyContent="flex-end" mt="24px">
         <ParaSmall mr="8px">
@@ -164,73 +184,132 @@ const StreamingInfoTable = ({
     );
   }
 
-  if (enableSearch) {
-    searchNode = (
-      <Flex justifyContent="flex-end" mt="24px">
-        <input
-          placeholder="Search"
-          value={tableConfig.searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-      </Flex>
+  if (enableFilters) {
+    const songNameFilters = data.map((item) => ({
+      label: item.songName,
+      value: item.songName,
+    }));
+    const artistFilters = data.map((item) => ({
+      label: item.artist,
+      value: item.artist,
+    }));
+
+    tableActionsNode.push(
+      <Select
+        isMulti
+        options={artistFilters}
+        placeholder="Select Artists"
+        key="artist-filter"
+        onChange={(selectedOptions) =>
+          handleSelectFilter(
+            "artist",
+            selectedOptions.map((option) => option.value)
+          )
+        }
+        maxMenuHeight={160}
+        styles={{
+          control: (provided) => ({
+            ...provided,
+            height: "32px",
+            background: theme.colors.BG_NEUTRAL_WEAKEST,
+          }),
+        }}
+      />,
+      <Select
+        isMulti
+        options={songNameFilters}
+        placeholder="Select Songs"
+        key="songName-filter"
+        onChange={(selectedOptions) =>
+          handleSelectFilter(
+            "songName",
+            selectedOptions.map((option) => option.value)
+          )
+        }
+        maxMenuHeight={160}
+        styles={{
+          control: (provided) => ({
+            ...provided,
+            height: "32px",
+            background: theme.colors.BG_NEUTRAL_WEAKEST,
+          }),
+        }}
+      />
     );
   }
-
   return (
     <>
-      {searchNode}
-      <Table>
-        <Table.Head>
-          <Table.Tr>
-            <Table.StickyCol
-              isHeader
-              rightSectionNode={getHeaderCellRightSectionNode("userId")}
-            >
-              User ID
-            </Table.StickyCol>
-            <Table.Th
-              width="104px"
-              rightSectionNode={getHeaderCellRightSectionNode("songName")}
-            >
-              Song Name
-            </Table.Th>
-            <Table.Th
-              width="104px"
-              rightSectionNode={getHeaderCellRightSectionNode("artist")}
-            >
-              Artist
-            </Table.Th>
-            <Table.Th
-              width="104px"
-              rightSectionNode={getHeaderCellRightSectionNode("streamCount")}
-            >
-              Stream Count
-            </Table.Th>
-            <Table.Th
-              width="104px"
-              rightSectionNode={getHeaderCellRightSectionNode("dateStreamed")}
-            >
-              Date Streamed
-            </Table.Th>
-          </Table.Tr>
-        </Table.Head>
+      {tableActionsNode.length ? (
+        <Flex
+          justifyContent="flex-end"
+          mt="24px"
+          mb="16px"
+          style={{ gap: "8px" }}
+        >
+          {tableActionsNode}
+        </Flex>
+      ) : null}
 
-        <Table.Body>
-          {paginatedData.map((item) => (
-            <Table.Tr key={`${item.songName}`}>
-              <Table.StickyCol>
-                <LabelSmallStrong color={theme.colors.TEXT_NEUTRAL_STRONG}>
-                  {item.userId}
-                </LabelSmallStrong>
+      <Box minHeight="400px">
+        <Table>
+          <Table.Head>
+            <Table.Tr>
+              <Table.StickyCol
+                isHeader
+                rightSectionNode={getHeaderCellRightSectionNode("userId")}
+              >
+                User ID
               </Table.StickyCol>
-              <Table.Td textBold>{item.songName}</Table.Td>
-              <Table.Td>{item.artist}</Table.Td>
-              <Table.Td>{item.streamCount}</Table.Td>
-              <Table.Td>{item.dateStreamed}</Table.Td>
+              <Table.Th
+                width="104px"
+                rightSectionNode={getHeaderCellRightSectionNode("songName")}
+              >
+                Song Name
+              </Table.Th>
+              <Table.Th
+                width="104px"
+                rightSectionNode={getHeaderCellRightSectionNode("artist")}
+              >
+                Artist
+              </Table.Th>
+              <Table.Th
+                width="104px"
+                rightSectionNode={getHeaderCellRightSectionNode("streamCount")}
+              >
+                Stream Count
+              </Table.Th>
+              <Table.Th
+                width="104px"
+                rightSectionNode={getHeaderCellRightSectionNode("dateStreamed")}
+              >
+                Date Streamed
+              </Table.Th>
             </Table.Tr>
-          ))}
-        </Table.Body>
-      </Table>
+          </Table.Head>
+
+          <Table.Body>
+            {paginatedData?.length ? (
+              paginatedData.map((item) => (
+                <Table.Tr key={`${item.songName}`}>
+                  <Table.StickyCol>
+                    <LabelSmallStrong color={theme.colors.TEXT_NEUTRAL_STRONG}>
+                      {item.userId}
+                    </LabelSmallStrong>
+                  </Table.StickyCol>
+                  <Table.Td textBold>{item.songName}</Table.Td>
+                  <Table.Td>{item.artist}</Table.Td>
+                  <Table.Td>{item.streamCount}</Table.Td>
+                  <Table.Td>{item.dateStreamed}</Table.Td>
+                </Table.Tr>
+              ))
+            ) : (
+              <Table.Tr>
+                <Table.Td>No data</Table.Td>
+              </Table.Tr>
+            )}
+          </Table.Body>
+        </Table>
+      </Box>
       {paginationNode}
     </>
   );
