@@ -38,10 +38,7 @@ const DashboardPage = () => {
             description="Revenue generated from different sources"
             flex="1"
           >
-            <RevenueDistributionChart
-              data={revenueDistribution}
-              enableFilters
-            />
+            <RevenueDistributionChart data={revenueDistribution} />
           </Card>
           <Card
             title="Top 5 Streamed Songs"

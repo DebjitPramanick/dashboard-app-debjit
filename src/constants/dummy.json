@@ -68,116 +68,236 @@
   },
   "dataTable": [
     {
-      "songName": "One Dance",
+      "songName": "God's Plan",
       "artist": "Drake",
-      "dateStreamed": "2025-02-01",
-      "recentStreamCount": 5,
-      "userId": 101,
+      "dateStreamed": "2025-02-04",
+      "recentStreamCount": 1,
+      "userId": 123401,
       "source": "Subscriptions"
     },
     {
       "songName": "Blinding Lights",
       "artist": "The Weeknd",
-      "dateStreamed": "2025-02-01",
-      "recentStreamCount": 3,
-      "userId": 102,
+      "dateStreamed": "2025-02-03",
+      "recentStreamCount": 1,
+      "userId": 123402,
       "source": "Ads"
+    },
+    {
+      "songName": "Peaches",
+      "artist": "Justin Bieber",
+      "dateStreamed": "2025-02-02",
+      "recentStreamCount": 1,
+      "userId": 123403,
+      "source": "Merch"
+    },
+    {
+      "songName": "Stay",
+      "artist": "The Kid LAROI",
+      "dateStreamed": "2025-02-01",
+      "recentStreamCount": 1,
+      "userId": 123404,
+      "source": "Sponsorships"
+    },
+    {
+      "songName": "Levitating",
+      "artist": "Dua Lipa",
+      "dateStreamed": "2025-01-31",
+      "recentStreamCount": 1,
+      "userId": 123405,
+      "source": "Concerts"
+    },
+    {
+      "songName": "One Dance",
+      "artist": "Drake",
+      "dateStreamed": "2025-01-30",
+      "recentStreamCount": 1,
+      "userId": 123406,
+      "source": "Subscriptions"
     },
     {
       "songName": "Shape of You",
       "artist": "Ed Sheeran",
-      "dateStreamed": "2025-02-02",
-      "recentStreamCount": 4,
-      "userId": 103,
+      "dateStreamed": "2025-01-29",
+      "recentStreamCount": 1,
+      "userId": 123407,
+      "source": "Ads"
+    },
+    {
+      "songName": "Save Your Tears",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-01-28",
+      "recentStreamCount": 1,
+      "userId": 123408,
+      "source": "Merch"
+    },
+    {
+      "songName": "Sunflower",
+      "artist": "Post Malone",
+      "dateStreamed": "2025-01-27",
+      "recentStreamCount": 1,
+      "userId": 123409,
+      "source": "Sponsorships"
+    },
+    {
+      "songName": "Senorita",
+      "artist": "Shawn Mendes",
+      "dateStreamed": "2025-01-26",
+      "recentStreamCount": 1,
+      "userId": 123410,
+      "source": "Concerts"
+    },
+    {
+      "songName": "God's Plan",
+      "artist": "Drake",
+      "dateStreamed": "2025-01-25",
+      "recentStreamCount": 1,
+      "userId": 123411,
+      "source": "Subscriptions"
+    },
+    {
+      "songName": "Blinding Lights",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-01-24",
+      "recentStreamCount": 1,
+      "userId": 123412,
+      "source": "Ads"
+    },
+    {
+      "songName": "Peaches",
+      "artist": "Justin Bieber",
+      "dateStreamed": "2025-01-23",
+      "recentStreamCount": 1,
+      "userId": 123413,
+      "source": "Merch"
+    },
+    {
+      "songName": "Stay",
+      "artist": "The Kid LAROI",
+      "dateStreamed": "2025-01-22",
+      "recentStreamCount": 1,
+      "userId": 123414,
+      "source": "Sponsorships"
+    },
+    {
+      "songName": "Levitating",
+      "artist": "Dua Lipa",
+      "dateStreamed": "2025-01-21",
+      "recentStreamCount": 1,
+      "userId": 123415,
+      "source": "Concerts"
+    },
+    {
+      "songName": "One Dance",
+      "artist": "Drake",
+      "dateStreamed": "2025-01-20",
+      "recentStreamCount": 1,
+      "userId": 123416,
+      "source": "Subscriptions"
+    },
+    {
+      "songName": "Shape of You",
+      "artist": "Ed Sheeran",
+      "dateStreamed": "2025-01-19",
+      "recentStreamCount": 1,
+      "userId": 123417,
+      "source": "Ads"
+    },
+    {
+      "songName": "Save Your Tears",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-01-18",
+      "recentStreamCount": 1,
+      "userId": 123418,
+      "source": "Merch"
+    },
+    {
+      "songName": "Sunflower",
+      "artist": "Post Malone",
+      "dateStreamed": "2025-01-17",
+      "recentStreamCount": 1,
+      "userId": 123419,
+      "source": "Sponsorships"
+    },
+    {
+      "songName": "Senorita",
+      "artist": "Shawn Mendes",
+      "dateStreamed": "2025-01-16",
+      "recentStreamCount": 1,
+      "userId": 123420,
+      "source": "Concerts"
+    },
+    {
+      "songName": "Senorita",
+      "artist": "Shawn Mendes",
+      "dateStreamed": "2025-01-15",
+      "recentStreamCount": 1,
+      "userId": 123421,
+      "source": "Subscriptions"
+    },
+    {
+      "songName": "Levitating",
+      "artist": "Dua Lipa",
+      "dateStreamed": "2025-01-14",
+      "recentStreamCount": 1,
+      "userId": 123422,
+      "source": "Ads"
+    },
+    {
+      "songName": "Blinding Lights",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-01-13",
+      "recentStreamCount": 1,
+      "userId": 123423,
+      "source": "Merch"
+    },
+    {
+      "songName": "One Dance",
+      "artist": "Drake",
+      "dateStreamed": "2025-01-12",
+      "recentStreamCount": 1,
+      "userId": 123424,
+      "source": "Sponsorships"
+    },
+    {
+      "songName": "Shape of You",
+      "artist": "Ed Sheeran",
+      "dateStreamed": "2025-01-11",
+      "recentStreamCount": 1,
+      "userId": 123425,
+      "source": "Concerts"
+    },
+    {
+      "songName": "Save Your Tears",
+      "artist": "The Weeknd",
+      "dateStreamed": "2025-01-10",
+      "recentStreamCount": 1,
+      "userId": 123426,
+      "source": "Subscriptions"
+    },
+    {
+      "songName": "Sunflower",
+      "artist": "Post Malone",
+      "dateStreamed": "2025-01-09",
+      "recentStreamCount": 1,
+      "userId": 123427,
+      "source": "Ads"
+    },
+    {
+      "songName": "Senorita",
+      "artist": "Shawn Mendes",
+      "dateStreamed": "2025-01-08",
+      "recentStreamCount": 1,
+      "userId": 123428,
       "source": "Merch"
     },
     {
       "songName": "Levitating",
       "artist": "Dua Lipa",
-      "dateStreamed": "2025-02-02",
-      "recentStreamCount": 2,
-      "userId": 104,
+      "dateStreamed": "2025-01-07",
+      "recentStreamCount": 1,
+      "userId": 123429,
       "source": "Sponsorships"
-    },
-    {
-      "songName": "Save Your Tears",
-      "artist": "The Weeknd",
-      "dateStreamed": "2025-02-03",
-      "recentStreamCount": 6,
-      "userId": 105,
-      "source": "Concerts"
-    },
-    {
-      "songName": "Sunflower",
-      "artist": "Post Malone",
-      "dateStreamed": "2025-02-03",
-      "recentStreamCount": 7,
-      "userId": 106,
-      "source": "Subscriptions"
-    },
-    {
-      "songName": "Believer",
-      "artist": "Imagine Dragons",
-      "dateStreamed": "2025-02-04",
-      "recentStreamCount": 8,
-      "userId": 107,
-      "source": "Ads"
-    },
-    {
-      "songName": "Bad Guy",
-      "artist": "Billie Eilish",
-      "dateStreamed": "2025-02-04",
-      "recentStreamCount": 3,
-      "userId": 108,
-      "source": "Merch"
-    },
-    {
-      "songName": "Senorita",
-      "artist": "Shawn Mendes",
-      "dateStreamed": "2025-02-05",
-      "recentStreamCount": 4,
-      "userId": 109,
-      "source": "Sponsorships"
-    },
-    {
-      "songName": "Rockstar",
-      "artist": "DaBaby",
-      "dateStreamed": "2025-02-05",
-      "recentStreamCount": 5,
-      "userId": 110,
-      "source": "Subscriptions"
-    },
-    {
-      "songName": "Night Changes",
-      "artist": "One Direction",
-      "dateStreamed": "2025-02-06",
-      "recentStreamCount": 6,
-      "userId": 111,
-      "source": "Ads"
-    },
-    {
-      "songName": "Old Town Road",
-      "artist": "Lil Nas X",
-      "dateStreamed": "2025-02-06",
-      "recentStreamCount": 7,
-      "userId": 112,
-      "source": "Merch"
-    },
-    {
-      "songName": "Funk Universo",
-      "artist": "The Weeknd",
-      "dateStreamed": "2025-02-07",
-      "recentStreamCount": 8,
-      "userId": 113,
-      "source": "Sponsorships"
-    },
-    {
-      "songName": "Danza Kuduro",
-      "artist": "Don Omar",
-      "dateStreamed": "2025-02-07",
-      "recentStreamCount": 9,
-      "userId": 114,
-      "source": "Subscriptions"
     }
   ]
 }

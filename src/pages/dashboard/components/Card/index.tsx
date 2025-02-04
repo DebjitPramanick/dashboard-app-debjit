@@ -29,7 +29,11 @@ const Card = ({
             </ParaSmall>
           )}
         </Box>
-        {headerRightSectionNode}
+        {headerRightSectionNode ? (
+          <Flex alignItems="center" ml="12px">
+            {headerRightSectionNode}
+          </Flex>
+        ) : null}
       </Header>
       <Content>{children}</Content>
     </Root>

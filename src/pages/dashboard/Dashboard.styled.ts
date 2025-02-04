@@ -19,7 +19,7 @@ export const CardsContainer = styled(Flex)`
   gap: 24px;
 
   ${mediaQueryMobileOrTablet} {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 `;
 

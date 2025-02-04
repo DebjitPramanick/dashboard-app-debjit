@@ -12,6 +12,7 @@ const Select: React.FC<SelectProps> = (props) => {
           ...provided,
           border: "none",
           backgroundColor: theme.colors.BG_NEUTRAL_WEAKEST,
+          minWidth: "200px",
         }),
       }}
       {...props}

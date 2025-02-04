@@ -1,13 +1,23 @@
 import { useTheme } from "styled-components";
 import { useImmer } from "use-immer";
 import { Table } from "~/components/molecules";
-import { LabelSmallStrong, ParaSmall } from "~/components/typography";
+import {
+  LabelSmallStrong,
+  ParaSmall,
+  ParaXSmall,
+} from "~/components/typography";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import {
+  MdKeyboardArrowRight,
+  MdKeyboardArrowLeft,
+  MdClose,
+} from "react-icons/md";
 
-import { Box, Flex } from "~/components/atoms";
-import Select from "react-select";
+import { Box, Flex, Select } from "~/components/atoms";
 import { IStreamingInfoTableData } from "../../types";
+import { useDashboard } from "~/contexts/DashboardContext";
+import { DASHBOARD_FILTER_KEYS } from "~/constants";
+import { camelToNormal } from "~/utils";
 
 interface IStreamingInfoTableProps {
   data: IStreamingInfoTableData[];
@@ -24,7 +34,6 @@ interface ITableConfigImmerState {
   searchQuery: string;
   currentPage: number;
   pageSize: number;
-  filters: Record<string, string[]>;
 }
 
 const SORTING_DIRECTION = {
@@ -40,13 +49,13 @@ const StreamingInfoTable = ({
   enableFilters = false,
 }: IStreamingInfoTableProps) => {
   const theme = useTheme();
+  const { filters, updateFilters } = useDashboard();
 
   const [tableConfig, setTableConfig] = useImmer<ITableConfigImmerState>({
     sortConfig: {
       key: "",
       direction: SORTING_DIRECTION.DESC,
     },
-    filters: {},
     searchQuery: "",
     currentPage: 1,
     pageSize: 6,
@@ -73,28 +82,30 @@ const StreamingInfoTable = ({
     });
   };
 
-  const handleSelectFilter = (filterKey: string, filterValues: string[]) => {
-    setTableConfig((draft) => {
-      if (filterValues.length === 0) {
-        delete draft.filters[filterKey];
-      } else {
-        draft.filters[filterKey] = filterValues;
-      }
-    });
+  const handleSelectFilter = (filterKey: string, filterValues: string) => {
+    updateFilters(filterKey, filterValues);
   };
 
   const filteredData = (() => {
     let items = [...data];
-    const songNameFilters = tableConfig.filters["songName"] || [];
-    const artistFilters = tableConfig.filters["artist"] || [];
+    const songNameFilter = filters[DASHBOARD_FILTER_KEYS.SONG_NAME] || "";
+    const artistFilter = filters[DASHBOARD_FILTER_KEYS.ARTIST] || "";
+    const revenueSourceFilter =
+      filters[DASHBOARD_FILTER_KEYS.REVENUE_SOURCE] || "";
 
-    if (songNameFilters.length > 0) {
-      items = items.filter((item) => songNameFilters.includes(item.songName));
+    if (revenueSourceFilter) {
+      items = items.filter((item) => item.source === revenueSourceFilter);
     }
 
-    if (artistFilters.length > 0) {
-      items = items.filter((item) => artistFilters.includes(item.artist));
+    if (songNameFilter) {
+      items = items.filter((item) => item.songName === songNameFilter);
     }
+
+    if (artistFilter) {
+      items = items.filter((item) => item.artist === artistFilter);
+    }
+
+    console.log("Filtered data", items);
 
     return items;
   })();
@@ -166,6 +177,9 @@ const StreamingInfoTable = ({
   if (enablePagination && paginatedData.length > 0) {
     paginationNode = (
       <Flex justifyContent="flex-end" alignItems="center" mt="24px">
+        <ParaSmall mr="8px">
+          Showing {paginatedData.length} of {sortedData.length}
+        </ParaSmall>
         <MdKeyboardArrowLeft
           size={24}
           cursor="pointer"
@@ -185,65 +199,98 @@ const StreamingInfoTable = ({
   }
 
   if (enableFilters) {
-    const songNameFilters = data.map((item) => ({
-      label: item.songName,
-      value: item.songName,
+    const uniqueSongNames = [...new Set(data.map((item) => item.songName))];
+    const uniqueArtists = [...new Set(data.map((item) => item.artist))];
+
+    const songNameFilters = uniqueSongNames.map((songName) => ({
+      label: songName,
+      value: songName,
     }));
-    const artistFilters = data.map((item) => ({
-      label: item.artist,
-      value: item.artist,
+    const artistFilters = uniqueArtists.map((artist) => ({
+      label: artist,
+      value: artist,
     }));
 
     tableActionsNode.push(
       <Select
-        isMulti
         options={artistFilters}
-        placeholder="Select Artists"
+        value={filters[DASHBOARD_FILTER_KEYS.ARTIST]}
+        placeholder="Select Artist"
         key="artist-filter"
-        onChange={(selectedOptions) =>
+        onChange={(selectedOption) =>
           handleSelectFilter(
-            "artist",
-            selectedOptions.map((option) => option.value)
+            DASHBOARD_FILTER_KEYS.ARTIST,
+            (selectedOption as { value: string }).value
           )
         }
-        maxMenuHeight={160}
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            height: "32px",
-            background: theme.colors.BG_NEUTRAL_WEAKEST,
-          }),
-        }}
       />,
       <Select
-        isMulti
         options={songNameFilters}
-        placeholder="Select Songs"
+        value={filters[DASHBOARD_FILTER_KEYS.SONG_NAME]}
+        placeholder="Select Song"
         key="songName-filter"
-        onChange={(selectedOptions) =>
+        onChange={(selectedOption) =>
           handleSelectFilter(
-            "songName",
-            selectedOptions.map((option) => option.value)
+            DASHBOARD_FILTER_KEYS.SONG_NAME,
+            (selectedOption as { value: string }).value
           )
         }
-        maxMenuHeight={160}
-        styles={{
-          control: (provided) => ({
-            ...provided,
-            height: "32px",
-            background: theme.colors.BG_NEUTRAL_WEAKEST,
-          }),
-        }}
       />
     );
   }
+
+  const renderAppliedFiltersNode = () => {
+    const appliedFilterNodes: React.ReactNode[] = [];
+
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) {
+        appliedFilterNodes.push(
+          <Flex
+            key={key}
+            alignItems="center"
+            style={{ gap: "8px" }}
+            bg={theme.colors.BG_ACCENT_WEAKER}
+            p="2px 8px"
+            borderRadius="4px"
+            height="38px"
+          >
+            <ParaXSmall color={theme.colors.TEXT_ACCENT_STRONG}>
+              {camelToNormal(key)} -
+            </ParaXSmall>
+            <ParaXSmall color={theme.colors.TEXT_ACCENT_STRONG}>
+              {value}
+            </ParaXSmall>
+            <MdClose
+              size={16}
+              cursor="pointer"
+              color={theme.colors.ICON_ACCENT_STRONG}
+              onClick={() => updateFilters(key, "")}
+            />
+          </Flex>
+        );
+      }
+    });
+
+    return (
+      <Flex alignItems="center" style={{ gap: "8px" }}>
+        {appliedFilterNodes}
+      </Flex>
+    );
+  };
+
   return (
     <>
-      {tableActionsNode.length ? (
-        <Flex justifyContent="flex-end" mb="16px" style={{ gap: "8px" }}>
+      <Flex
+        justifyContent="space-between"
+        mb="16px"
+        style={{ gap: "8px" }}
+        p="2px"
+      >
+        {renderAppliedFiltersNode()}
+        <Flex style={{ gap: "8px" }} alignItems="center">
           {tableActionsNode}
         </Flex>
-      ) : null}
+      </Flex>
 
       <Box minHeight="320px">
         <Table>
@@ -287,7 +334,7 @@ const StreamingInfoTable = ({
           <Table.Body>
             {paginatedData?.length ? (
               paginatedData.map((item) => (
-                <Table.Tr key={`${item.songName}`}>
+                <Table.Tr key={`${item.songName}-${item.userId}`}>
                   <Table.StickyCol>
                     <LabelSmallStrong color={theme.colors.TEXT_NEUTRAL_STRONG}>
                       {item.userId}
