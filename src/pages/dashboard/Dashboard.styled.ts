@@ -7,7 +7,7 @@ import { mediaQueryMobileOrTablet } from "~/styles/mixins";
 export const Root = styled(Box)`
   background-color: ${colors.BG_NEUTRAL_WEAKEST};
   min-height: 100vh;
-  min-width: 100dvh;
+  min-height: 100dvh;
   padding: 24px 0;
 `;
 
