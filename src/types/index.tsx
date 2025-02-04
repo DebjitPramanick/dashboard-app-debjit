@@ -1,9 +1,0 @@
-import { DASHBOARD_FILTER_KEYS } from "~/constants";
-
-export interface IFilters {
-  [DASHBOARD_FILTER_KEYS.USER_TYPE]: string[];
-  [DASHBOARD_FILTER_KEYS.TOP_STREAMED_SONGS]: string[];
-  [DASHBOARD_FILTER_KEYS.REVENUE_SOURCES]: string[];
-  [DASHBOARD_FILTER_KEYS.SONG_NAMES]: string[];
-  [DASHBOARD_FILTER_KEYS.ARTISTS]: string[];
-}
