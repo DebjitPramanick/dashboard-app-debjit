@@ -11,8 +11,9 @@ import {
 import colors from "~/styles/colors";
 import { formatNumber } from "~/utils";
 import ChartToolTipContent from "../ChartToolTip";
+import { IUserGrowthChartData } from "../../types";
 
-const LineChart = ({ data }: { data: any[] }) => {
+const UserGrowthChart = ({ data }: { data: IUserGrowthChartData[] }) => {
   return (
     <ResponsiveContainer width="100%" height={400}>
       <RechartsLineChart
@@ -61,4 +62,4 @@ const LineChart = ({ data }: { data: any[] }) => {
   );
 };
 
-export default LineChart;
+export default UserGrowthChart;

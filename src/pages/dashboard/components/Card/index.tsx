@@ -8,7 +8,7 @@ interface CardProps {
   description?: string;
   headerRightSectionNode?: React.ReactNode;
   children: React.ReactNode;
-  [key: string]: any;
+  [key: string]: object | string | number | React.ReactNode;
 }
 
 const Card = ({

@@ -12,12 +12,13 @@ import Select from "react-select";
 import { useTheme } from "styled-components";
 import { Flex } from "~/components/atoms";
 import { useState } from "react";
+import { IRevenueDistributionChartData } from "../../types";
 
-const PieChart = ({
+const RevenueDistributionChart = ({
   data,
   enableFilters = false,
 }: {
-  data: any[];
+  data: IRevenueDistributionChartData[];
   enableFilters?: boolean;
 }) => {
   const theme = useTheme();
@@ -113,4 +114,4 @@ const PieChart = ({
   );
 };
 
-export default PieChart;
+export default RevenueDistributionChart;

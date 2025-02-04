@@ -1,6 +1,6 @@
-import BarChart from "./components/BarChart";
-import LineChart from "./components/LineChart";
-import PieChart from "./components/PieChart";
+import TopStreamedSongsChart from "./components/TopStreamedSongsChart";
+import UserGrowthChart from "./components/UserGrowthChart";
+import RevenueDistributionChart from "./components/RevenueDistributionChart";
 import * as Styles from "./Dashboard.styled";
 
 import dummyData from "~/constants/dummy.json";
@@ -13,21 +13,10 @@ import StreamingInfoTable from "./components/StreamingInfoTable";
 const DashboardPage = () => {
   const theme = useTheme();
 
-  const topUsersDataToVisualize = dummyData.dataVisualization.userGrowth.map(
-    (item) => ({
-      name: item.month,
-      totalUsers: item.totalUsers,
-      activeUsers: item.activeUsers,
-    })
-  );
-
-  const revenueDistributionDataToVisualize =
-    dummyData.dataVisualization.revenueDistribution;
-
-  const topSteamsDataToVisualize =
-    dummyData.dataVisualization.top5StreamedSongs;
-
-  const usersStreamingInfo = dummyData.dataTable;
+  const {
+    dataVisualization: { userGrowth, revenueDistribution, top5StreamedSongs },
+    dataTable: usersStreamingInfo,
+  } = dummyData;
 
   return (
     <Styles.Root>
@@ -41,7 +30,7 @@ const DashboardPage = () => {
           description="Total users and active users"
           mt="32px"
         >
-          <LineChart data={topUsersDataToVisualize} />
+          <UserGrowthChart data={userGrowth} />
         </Card>
         <Styles.CardsContainer mt="24px">
           <Card
@@ -49,7 +38,10 @@ const DashboardPage = () => {
             description="Revenue generated from different sources"
             flex="1"
           >
-            <PieChart data={revenueDistributionDataToVisualize} enableFilters />
+            <RevenueDistributionChart
+              data={revenueDistribution}
+              enableFilters
+            />
           </Card>
           <Card
             title="Top 5 Streamed Songs"
@@ -57,7 +49,7 @@ const DashboardPage = () => {
             flex="1"
             height="100%"
           >
-            <BarChart data={topSteamsDataToVisualize} />
+            <TopStreamedSongsChart data={top5StreamedSongs} />
           </Card>
         </Styles.CardsContainer>
         <Card title="Table" description="Table of users" mt="24px">

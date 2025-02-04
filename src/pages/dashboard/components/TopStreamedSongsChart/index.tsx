@@ -11,8 +11,13 @@ import { useTheme } from "styled-components";
 import colors from "~/styles/colors";
 import { formatNumber } from "~/utils";
 import ChartToolTipContent from "../ChartToolTip";
+import { ITopStreamedSongsChartData } from "../../types";
 
-const BarChart = ({ data }: { data: any[] }) => {
+const TopStreamedSongsChart = ({
+  data,
+}: {
+  data: ITopStreamedSongsChartData[];
+}) => {
   const theme = useTheme();
   return (
     <ResponsiveContainer width="100%" height={400}>
@@ -42,4 +47,4 @@ const BarChart = ({ data }: { data: any[] }) => {
   );
 };
 
-export default BarChart;
+export default TopStreamedSongsChart;

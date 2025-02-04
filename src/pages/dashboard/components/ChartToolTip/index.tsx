@@ -23,14 +23,16 @@ const ChartToolTipContent = (props: TooltipProps<any, any>) => {
             </ParaSmall>
           ) : null}
           {payload?.map((item) => (
-            <Item key={item.name}>
+            <Item key={item.name as string}>
               <VerticalLine
                 $color={item.color || theme.colors.BORDER_ACCENT_NORMAL}
               />
               <Box>
-                <Value theme={theme}>{formatNumber(item.value)}</Value>
+                <Value theme={theme}>
+                  {formatNumber(item.value as number)}
+                </Value>
                 <ParaSmall color={theme.colors.TEXT_NEUTRAL_NORMAL}>
-                  {camelToNormal(item.name)}
+                  {camelToNormal(item.name as string)}
                 </ParaSmall>
               </Box>
             </Item>
