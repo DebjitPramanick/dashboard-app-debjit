@@ -12,12 +12,14 @@ import ChartToolTipContent from "../ChartToolTip";
 import { IRevenueDistributionChartData } from "../../types";
 import { useDashboard } from "~/contexts/DashboardContext";
 import { DASHBOARD_FILTER_KEYS } from "~/constants";
+import { useIsTabletOrMobileMedia } from "~/hooks";
 
 const RevenueDistributionChart = ({
   data,
 }: {
   data: IRevenueDistributionChartData[];
 }) => {
+  const isTabletOrMobile = useIsTabletOrMobileMedia();
   const { updateFilters } = useDashboard();
 
   const segmentColors = [
@@ -31,20 +33,16 @@ const RevenueDistributionChart = ({
 
   return (
     <>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height={isTabletOrMobile ? 300 : 400}>
         <RechartsPieChart>
-          <Legend
-            verticalAlign="top"
-            align="right"
-            wrapperStyle={{ top: 0, right: 10, fontSize: "12px" }}
-          />
+          <Legend align="right" wrapperStyle={{ fontSize: "12px" }} />
           <Pie
             data={data}
             dataKey="amount"
             nameKey="source"
             cx="50%"
             cy="50%"
-            outerRadius={180}
+            outerRadius={isTabletOrMobile ? 110 : 160}
             style={{ outline: "none" }}
           >
             {data.map((_entry, index) => (

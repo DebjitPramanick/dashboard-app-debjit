@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Box, Flex } from "~/components/atoms";
 import { ParaLargeStrong, ParaSmall } from "~/components/typography";
 import colors from "~/styles/colors";
+import { mediaQueryMobileOrTablet } from "~/styles/mixins";
 
 interface CardProps {
   title: string;
@@ -54,10 +55,18 @@ const Header = styled(Flex)`
   justify-content: space-between;
   padding: 16px 24px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.BORDER_NEUTRAL_WEAK};
+
+  ${mediaQueryMobileOrTablet} {
+    padding: 16px;
+  }
 `;
 
 const Content = styled(Box)`
   padding: 24px;
+
+  ${mediaQueryMobileOrTablet} {
+    padding: 16px;
+  }
 `;
 
 export const Divider = styled(Box)`

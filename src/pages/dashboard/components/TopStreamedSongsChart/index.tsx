@@ -14,6 +14,7 @@ import ChartToolTipContent from "../ChartToolTip";
 import { ITopStreamedSongsChartData } from "../../types";
 import { useDashboard } from "~/contexts/DashboardContext";
 import { DASHBOARD_FILTER_KEYS } from "~/constants";
+import { useIsTabletOrMobileMedia } from "~/hooks";
 
 const TopStreamedSongsChart = ({
   data,
@@ -21,12 +22,19 @@ const TopStreamedSongsChart = ({
   data: ITopStreamedSongsChartData[];
 }) => {
   const theme = useTheme();
+  const isTabletOrMobile = useIsTabletOrMobileMedia();
   const { updateFilters } = useDashboard();
 
   return (
     <>
-      <ResponsiveContainer width="100%" height={400}>
-        <RechartsBarChart data={data}>
+      <ResponsiveContainer width="100%" height={isTabletOrMobile ? 300 : 400}>
+        <RechartsBarChart
+          data={data}
+          margin={{
+            left: isTabletOrMobile ? -8 : -6,
+            bottom: 8,
+          }}
+        >
           <XAxis
             dataKey="songName"
             axisLine={false}

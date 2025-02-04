@@ -12,13 +12,21 @@ import colors from "~/styles/colors";
 import { formatNumber } from "~/utils";
 import ChartToolTipContent from "../ChartToolTip";
 import { IUserGrowthChartData } from "../../types";
+import { useIsTabletOrMobileMedia } from "~/hooks";
 
 const UserGrowthChart = ({ data }: { data: IUserGrowthChartData[] }) => {
+  const isTabletOrMobile = useIsTabletOrMobileMedia();
+
   return (
-    <ResponsiveContainer width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={isTabletOrMobile ? 300 : 400}>
       <RechartsLineChart
         data={data}
-        margin={{ top: 16, bottom: 32, right: 20, left: 2 }}
+        margin={{
+          top: 16,
+          bottom: 32,
+          right: isTabletOrMobile ? 4 : 20,
+          left: isTabletOrMobile ? 0 : 2,
+        }}
       >
         <Legend
           verticalAlign="top"
@@ -39,7 +47,7 @@ const UserGrowthChart = ({ data }: { data: IUserGrowthChartData[] }) => {
           stroke={colors.BORDER_ACCENT_STRONG}
         />
         <XAxis
-          dataKey="name"
+          dataKey="month"
           axisLine={false}
           tickLine={false}
           tick={{ textAnchor: "middle", fontSize: 12 }}
@@ -55,7 +63,7 @@ const UserGrowthChart = ({ data }: { data: IUserGrowthChartData[] }) => {
           tickMargin={16}
           tick={{ fontSize: 12 }}
         />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" vertical={false} />
+        <CartesianGrid stroke="#ccc" strokeDasharray="6 10" vertical={false} />
         <Tooltip content={<ChartToolTipContent />} />
       </RechartsLineChart>
     </ResponsiveContainer>
