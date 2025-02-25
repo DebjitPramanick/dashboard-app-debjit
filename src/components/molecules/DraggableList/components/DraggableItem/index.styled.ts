@@ -5,6 +5,7 @@ export const Item = styled.div`
   width: 350px;
   padding: ${({ theme }) => theme.spacing.sm};
   margin: ${({ theme }) => theme.spacing.sm} 0;
+  margin-top: 0;
   background-color: ${({ theme }) => theme.colors.bgTertiary};
   border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
   border-radius: ${({ theme }) => theme.borderRadius.sm};

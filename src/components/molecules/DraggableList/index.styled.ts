@@ -72,7 +72,8 @@ export const ListContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: ${({ theme }) => theme.spacing.xs};
   box-shadow: 0 0 10px ${({ theme }) => theme.colors.shadowPrimary};
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     box-shadow: 0 0 15px ${({ theme }) => theme.colors.shadowAccent};
@@ -141,9 +142,31 @@ export const DeleteListButton = styled(AddTaskButton)`
 `;
 
 export const ItemsContainer = styled.div`
-  height: 300px;
+  height: calc(100vh - 160px); // Account for header, list title, and padding
   background-color: ${({ theme }) => theme.colors.bgSecondary};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
+  overflow-y: auto;
+  padding-right: ${({ theme }) => theme.spacing.xs};
+  margin-top: ${({ theme }) => theme.spacing.sm};
+
+  /* Custom scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.bgTertiary};
+    border-radius: ${({ theme }) => theme.borderRadius.sm};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.borderPrimary};
+    border-radius: ${({ theme }) => theme.borderRadius.sm};
+
+    &:hover {
+      background: ${({ theme }) => theme.colors.borderAccent};
+    }
+  }
 `;
 
 export const HeaderActions = styled.div`
