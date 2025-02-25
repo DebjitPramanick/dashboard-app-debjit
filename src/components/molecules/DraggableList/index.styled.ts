@@ -146,7 +146,6 @@ export const ItemsContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.bgSecondary};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   overflow-y: auto;
-  padding-right: ${({ theme }) => theme.spacing.xs};
   margin-top: ${({ theme }) => theme.spacing.sm};
 
   /* Custom scrollbar styling */
