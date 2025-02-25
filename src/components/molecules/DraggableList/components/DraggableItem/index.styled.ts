@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Item = styled.div`
   min-height: 80px;
+  width: 350px;
   padding: ${({ theme }) => theme.spacing.sm};
   margin: ${({ theme }) => theme.spacing.sm} 0;
   background-color: ${({ theme }) => theme.colors.bgTertiary};

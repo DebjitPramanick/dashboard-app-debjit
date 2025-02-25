@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ToggleButton = styled.button`
+export const ToggleButton = styled.button<{ $isDark: boolean }>`
   background: none;
   border: none;
   padding: ${({ theme }) => theme.spacing.xs};

@@ -72,6 +72,7 @@ export const ListContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: ${({ theme }) => theme.spacing.xs};
   box-shadow: 0 0 10px ${({ theme }) => theme.colors.shadowPrimary};
+  overflow-y: auto;
 
   &:hover {
     box-shadow: 0 0 15px ${({ theme }) => theme.colors.shadowAccent};
